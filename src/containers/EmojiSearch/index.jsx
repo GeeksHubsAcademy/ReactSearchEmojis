@@ -27,7 +27,7 @@ class EmojiSearch extends Component {
     handleFilterEmojis = () => {
         const { search, data} = this.state;
 
-        const store = data.filter( emoji => emoji.title.includes(search));
+        const store = data.filter( emoji => emoji.unicodeName.includes(search));
         this.setState({filter: store});
     }
 
