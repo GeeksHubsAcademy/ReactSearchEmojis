@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import SearchEmojis from '../../components/SearchEmojis';
 import EmojiList from '../../components/EmojiList';
 
-import data from '../../services/emojis.json';
+import axios from 'axios';
 
 
 class EmojiSearch extends Component {
@@ -32,10 +32,12 @@ class EmojiSearch extends Component {
         this.setState({filter: store});
     }
 
-    componentDidMount() {
-        this.setState({ data: data}, () => {
-            // TODO: API
-        });
+     componentDidMount() {
+        axios.get("https://emoji-api.com/emojis?access_key=546099816b719d8f9de0a63eeb91a9949e271983").then( api => {
+            this.setState( { data: api.data }, () => {
+                console.log(this.state.data);
+            });
+        })
     }
 
     render() {
@@ -44,7 +46,7 @@ class EmojiSearch extends Component {
             <div>
                 <Header />
                 <SearchEmojis SearchChange={ this.handleSearchChange } />
-                <EmojiList data={( filter.length === 0 && search === '' ) ? data : filter}/>
+                <EmojiList data={( filter.length === 0 && search === '' ) ? data : filter}  />
             </div>
         )
     }
