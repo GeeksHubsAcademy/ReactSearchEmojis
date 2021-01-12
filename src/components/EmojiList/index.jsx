@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import EmojiListRow from '../EmojiListRow';
 
-import data from '../../services/emojis.json';
 import './style.css';
 
 class EmojiList extends Component {
@@ -10,7 +9,7 @@ class EmojiList extends Component {
     render() {
         return (
             <div className="component-emoji-list">
-                { data.map( emoji => (
+                { this.props.data.map( emoji => (
                     <EmojiListRow emoji={emoji} />
                 )) }
             </div>
