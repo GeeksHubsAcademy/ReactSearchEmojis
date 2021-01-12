@@ -1,0 +1,10 @@
+.component-header {
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    padding: 15px;
+    font-size: 32px;
+    font-weight: normal;
+    font-family: "Open Sans";
+    color: #333;
+}
