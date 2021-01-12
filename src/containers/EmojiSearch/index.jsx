@@ -6,7 +6,6 @@ import EmojiList from '../../components/EmojiList';
 
 import axios from 'axios';
 
-
 class EmojiSearch extends Component {
 
     constructor(props){
