@@ -1,17 +1,21 @@
 [
     {
+        "id": 1,
         "title": "100",
         "symbol": "💯"
     },
     {
+        "id": 2,
         "title": "1234",
         "symbol": "🔢"
     },
     {
+        "id": 3,
         "title": "Grinning",
         "symbol": "😀"
     },
     {
+        "id": 4,
         "title": "Grimacing",
         "symbol": "😬"
     }

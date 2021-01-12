@@ -18,3 +18,14 @@
     padding-left: 10px;
     font-size: 24px;
 }
+
+.component-emoji-row .info {
+    float: right;
+    padding-right: 10px;
+    color:  #ccc;
+    display: none;
+}
+
+.component-emoji-row:hover .info {
+    display: inline-block;
+}
