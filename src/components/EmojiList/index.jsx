@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import EmojiListRow from '../EmojiListRow';
+
 import data from '../../services/emojis.json';
 import './style.css';
 
@@ -9,7 +11,7 @@ class EmojiList extends Component {
         return (
             <div className="component-emoji-list">
                 { data.map( emoji => (
-                    <p> { emoji.title } </p>
+                    <EmojiListRow emoji={emoji} />
                 )) }
             </div>
         )
