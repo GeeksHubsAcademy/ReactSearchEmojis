@@ -1,5 +1,7 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 
 import App from './App';
@@ -9,9 +11,11 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Provider store={store}>
-    <StrictMode>
-      <App />
-    </StrictMode>
+    <BrowserRouter>
+      <StrictMode>
+        <App />
+      </StrictMode>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

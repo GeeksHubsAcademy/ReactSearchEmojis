@@ -1,10 +1,18 @@
-import EmojiSearch from './containers/EmojiSearch'
+import React, { Fragment } from 'react';
+import { Switch, Route } from "react-router-dom";
 
-function App() {
+import EmojiSearch from './containers/EmojiSearch';
+import EmojiLike from './containers/EmojiLike';
+
+const App = () => {
   return (
-    <div>
-      <EmojiSearch />
-    </div>
+    <Fragment>
+      <Switch>
+        <Route path="/" exact component={EmojiSearch} />
+        <Route path="/likes" exact component={EmojiLike} />
+
+      </Switch>
+    </Fragment>
   );
 }
 
