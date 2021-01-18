@@ -17,10 +17,14 @@ class EmojiList extends Component {
     render() {
         return (
             <div className="component-emoji-list">
-        
-                { this.props.data?.map( emoji => (
-                    <EmojiListRow emoji={emoji} key={emoji.slug} />
-                )) }
+                { 
+                    this.props.data?.map( emoji => (
+                        <EmojiListRow 
+                            emoji={emoji} key={emoji.slug}
+                            isLiked={this.props.isLiked}
+                        />
+                    ))
+                }
             </div>
         )
     }

@@ -4,11 +4,29 @@ import { addLike } from '../../store/actions/LikeAction';
 import './style.css';
 
 class EmojiListRow extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            isLiked: false,
+        }
+    }
+
+    componentDidMount() {
+        this.setState({isLiked: this.props.isLiked})
+    }
 
     handleAddLike = () => {
-        console.log('LIKE');
         const { addLike, emoji } = this.props;
-        addLike(emoji);
+        this.setState({isLiked: true}, () => {
+            addLike(emoji);
+        });
+    }
+
+    handleDeleteLike = () => {
+        this.setState({isLiked: false}, () => {
+            
+        });
     }
 
     render() {
@@ -19,7 +37,11 @@ class EmojiListRow extends Component {
             >
                 <span className="symbol"> { this.props.emoji.character } </span>
                 <span className="title"> { this.props.emoji.unicodeName } </span>
-                <button onClick={() => this.handleAddLike()} > LIKE / DISLIKE </button>
+                {
+                    ( this.state.isLiked )
+                    ? <button onClick={() => this.handleDeleteLike()} > DISLIKE </button>
+                    : <button onClick={() => this.handleAddLike()} > LIKE </button>
+                }
                 <span className="info"> Click to copy emoji </span>
             </div>
         )

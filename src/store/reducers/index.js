@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { LikeReducer } from './LikeReducer';
+import LikeReducer from './LikeReducer';
 
 export const rootReducers = combineReducers({
     LikeReducer,

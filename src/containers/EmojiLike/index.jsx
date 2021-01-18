@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Header from '../../components/Header';
 import SearchEmojis from '../../components/SearchEmojis';
@@ -11,7 +12,6 @@ class EmojiLike extends Component {
 
         this.state = { 
             search: '',
-            data: [],
             filter: []
         }
     }
@@ -23,25 +23,33 @@ class EmojiLike extends Component {
     }
 
     handleFilterEmojis = () => {
-        const { search, data} = this.state;
+        const { search } = this.state;
+        const { likes } = this.props;
 
-        const store = data.filter( emoji => emoji.unicodeName.includes(search));
+        const store = likes.filter( emoji => emoji.unicodeName.includes(search));
         this.setState({filter: store});
     }
 
-     componentDidMount() {
-    }
-
     render() {
-        const { filter, search, data} = this.state;
+        const { filter, search } = this.state;
+        const { likes } = this.props;
         return (
             <div>
                 <Header />
                 <SearchEmojis SearchChange={ this.handleSearchChange } />
-                <EmojiList data={( filter.length === 0 && search === '' ) ? data : filter}  />
+                <EmojiList 
+                    data={( filter.length === 0 && search === '' ) ? likes : filter}
+                    isLiked={true}   
+                />
             </div>
         )
     }
 }
 
-export default EmojiLike;
+const mapStateToProps = (state) => {
+    return {
+        likes: state.LikeReducer.likes,
+    }
+}
+
+export default connect(mapStateToProps)(EmojiLike);

@@ -4,18 +4,19 @@ const initialState = {
     likes: []
 };
 
-export const LikeReducer = (state = initialState, action) => {
+const LikeReducer = (state = initialState, action) => {
 
     switch(action.type) {
 
         case SAVE_LIKE:
             console.log(action.payload);
-            return state.likes.push(action.payload);
-
-        default: 
-        break;
+            return {
+                ...state,
+                likes: [...state.likes, action.payload]
+            };
     }
 
     return state;
 }
 
+export default LikeReducer;

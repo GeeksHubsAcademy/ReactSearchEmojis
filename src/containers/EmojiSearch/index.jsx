@@ -45,7 +45,10 @@ class EmojiSearch extends Component {
             <div>
                 <Header />
                 <SearchEmojis SearchChange={ this.handleSearchChange } />
-                <EmojiList data={( filter.length === 0 && search === '' ) ? data : filter}  />
+                <EmojiList 
+                    data={( filter.length === 0 && search === '' ) ? data : filter}
+                    isLiked={false} 
+                />
             </div>
         )
     }

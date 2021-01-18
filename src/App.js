@@ -10,7 +10,6 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={EmojiSearch} />
         <Route path="/likes" exact component={EmojiLike} />
-
       </Switch>
     </Fragment>
   );
