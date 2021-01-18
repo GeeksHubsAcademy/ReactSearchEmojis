@@ -9,7 +9,8 @@ export const LikeReducer = (state = initialState, action) => {
     switch(action.type) {
 
         case SAVE_LIKE:
-            return state;
+            console.log(action.payload);
+            return state.likes.push(action.payload);
 
         default: 
         break;
