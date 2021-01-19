@@ -31,7 +31,7 @@ class EmojiSearch extends Component {
         this.setState({filter: store});
     }
 
-     componentDidMount() {
+    componentDidMount() {
         axios.get("https://emoji-api.com/emojis?access_key=546099816b719d8f9de0a63eeb91a9949e271983").then( api => {
             this.setState( { data: api.data }, () => {
                 console.log(this.state.data);
@@ -47,7 +47,6 @@ class EmojiSearch extends Component {
                 <SearchEmojis SearchChange={ this.handleSearchChange } />
                 <EmojiList 
                     data={( filter.length === 0 && search === '' ) ? data : filter}
-                    isLiked={false} 
                 />
             </div>
         )

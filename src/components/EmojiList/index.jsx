@@ -21,7 +21,6 @@ class EmojiList extends Component {
                     this.props.data?.map( emoji => (
                         <EmojiListRow 
                             emoji={emoji} key={emoji.slug}
-                            isLiked={this.props.isLiked}
                         />
                     ))
                 }

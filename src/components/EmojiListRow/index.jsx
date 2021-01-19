@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addLike } from '../../store/actions/LikeAction';
+import { addLike, deleteLike } from '../../store/actions/LikeAction';
 import './style.css';
 
 class EmojiListRow extends Component {
@@ -13,8 +13,10 @@ class EmojiListRow extends Component {
     }
 
     componentDidMount() {
-        this.setState({isLiked: this.props.isLiked})
-    }
+        const { likes, emoji } = this.props;
+        const isLiked = likes.some( like => like.slug === emoji.slug);
+        this.setState({ isLiked: isLiked});
+    } 
 
     handleAddLike = () => {
         const { addLike, emoji } = this.props;
@@ -24,8 +26,9 @@ class EmojiListRow extends Component {
     }
 
     handleDeleteLike = () => {
+        const { deleteLike, emoji } = this.props;
         this.setState({isLiked: false}, () => {
-            
+            deleteLike(emoji.slug);
         });
     }
 
@@ -51,7 +54,14 @@ class EmojiListRow extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         addLike: emoji => dispatch(addLike(emoji)),
+        deleteLike: slug => dispatch(deleteLike(slug))
     }
 }
 
-export default connect(null, mapDispatchToProps)(EmojiListRow);
+const mapStateToProps = (state) => {
+    return {
+        likes: state.LikeReducer.likes,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmojiListRow);
