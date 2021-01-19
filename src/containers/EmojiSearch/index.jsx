@@ -6,9 +6,6 @@ import Header from '../../components/Header';
 import SearchEmojis from '../../components/SearchEmojis';
 import EmojiList from '../../components/EmojiList';
 
-import axios from 'axios';
-import { GET_EMOJIS } from '../../services/endpoints';
-
 class EmojiSearch extends Component {
 
     constructor(props){
@@ -35,9 +32,9 @@ class EmojiSearch extends Component {
     }
 
     componentDidMount() {
-        axios.get(GET_EMOJIS).then( api => {
-            this.props.getEmojis(api.data);
-        });
+        if( this.props.emojis.length === 0) {
+            this.props.getEmojis();
+        }
     }
 
     render() {
@@ -63,7 +60,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        getEmojis: emojis => dispatch(getEmojis(emojis)),
+        getEmojis: () => dispatch(getEmojis()),
     }
 }
 
